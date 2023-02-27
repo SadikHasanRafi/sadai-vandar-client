@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/UserContext';
 
 const Login = () => {
+
+    const {handleSignInWithGoogle} = useContext(AuthContext)
+
     return (
         <div>
             <div className="hero min-h-screen">
@@ -27,7 +31,7 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                             <div className="divider">OR</div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login by Google</button>
+                                <button onClick={()=>handleSignInWithGoogle()} className="btn btn-primary">Login by Google</button>
                             </div>
                         </div>
                     </div>
