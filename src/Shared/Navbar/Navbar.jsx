@@ -5,16 +5,17 @@ const Navbar = () => {
     const {handleSignOutWithGoogle, user} = useContext(AuthContext)
     console.log(user)
     return (
-        <div className=' bg-secondary fixed top-0 min-w-full  z-50 '>
-            <div className="navbar  container mx-auto bg-primary m-0">
-            <div className="flex-1">
+        <div className=' bg-secondary sticky top-0   z-50 '>
+            <div className="navbar  container mx-auto min-w-full bg-primary">
+            <div className="navbar-start">
                 <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
             </div>
-            <div className="flex-none">
+            <div className="navbar-end">
                 
 
                 {/* ***************************** eta holo add to cart er dropdown ***************************** */}
-                <div className="dropdown dropdown-end">
+                <div>
+                 {/* className="dropdown dropdown-end lg:hidden */}
 
                     {/* -------------eta holo cart icon ta--------------------------- */}
                     {/* <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -42,10 +43,12 @@ const Navbar = () => {
                 {/* ********************************************************************************************* */}
 
 
-                <div className="dropdown dropdown-end">
+                {
+                    user ?
+                    <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                        <img src={user?.photoURL} />
+                        <img src={user.photoURL} />
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -54,6 +57,9 @@ const Navbar = () => {
                         <Link to='' ><li onClick={()=> handleSignOutWithGoogle()}>Logout</li></Link>
                     </ul>
                 </div>
+                :
+                <Link to='login' ><button className="btn btn-outline btn-secondary">Login</button></Link>
+                }
                 </div>
             </div>
         </div>

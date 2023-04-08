@@ -5,6 +5,7 @@ import app from '../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 
 
+
 export const AuthContext = createContext()
 const auth = getAuth(app)
 
@@ -14,13 +15,10 @@ const UserContext = ({children}) => {
     const [user, setUser] = useState({})
 
 
-    const handleSignInWithGoogle =async () => {
-        await signInWithGoogle()
-        setUser(gUser)
-    }
+    
     const handleSignOutWithGoogle =async () => {
         await signOut()
-        setUser({})
+        setUser(false)
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (createUser) => {
@@ -32,10 +30,11 @@ const UserContext = ({children}) => {
     if (gSignInLoading || gSignOutLoading) {
         <Loading></Loading>
     }
+    
 
     const props = {
         user,
-        handleSignInWithGoogle,
+        signInWithGoogle,
         handleSignOutWithGoogle,
         auth
     }

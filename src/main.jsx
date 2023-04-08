@@ -8,9 +8,9 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <UserContext>
-        <BrowserRouter>
-          <App></App>
-        </BrowserRouter>
+          <BrowserRouter>
+            <App></App>
+          </BrowserRouter>
       </UserContext>
   </React.StrictMode>,
 )
