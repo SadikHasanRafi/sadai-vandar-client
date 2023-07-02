@@ -1,25 +1,15 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/LoginSignin/Login";
-import RetailerDashboard from "./Pages/RetailerDashboard/RetailerDashboard";
-import Navbar from "./Shared/Navbar/Navbar";
+
+import './App.css'
 
 function App() {
-  return (
-    <div>
-      <Navbar></Navbar>
 
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route
-          path="/retailer-dashboard"
-          element={<RetailerDashboard></RetailerDashboard>}
-        ></Route>
-      </Routes>
-    </div>
-  );
+  return (
+    <>
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
+    </>
+  )
 }
 
-export default App;
+export default App
