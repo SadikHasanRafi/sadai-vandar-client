@@ -25,6 +25,8 @@ import BuyerSetProfile from "../Pages/Dashboard/Buyer/BuyerSetProfile/BuyerSetPr
 import BuyerMyBuying from "../Pages/Dashboard/Buyer/BuyerMyBuyings/BuyerMyBuying";
 import BuyerMyProfile from "../Pages/Dashboard/Buyer/BuyerMyProfile/BuyerMyProfile";
 import BuyerExperimentalFeature from "../Pages/Dashboard/Buyer/BuyerExperimentalFeatures/BuyerExperimentalFeature";
+import ContactUs from "../Pages/ContactUs/ContactUs";
+import GiveReview from "../Pages/GiveReview/GiveReview";
 
 const router = createBrowserRouter([
     {
@@ -41,32 +43,35 @@ const router = createBrowserRouter([
                 path:"/signup",
                 element:<Signup></Signup>
             },{
-                path:"/show-all-products",
-                element:<ShowAllProducts></ShowAllProducts>
-            },{
                 path:"/set-role",
                 element:<SelectRole></SelectRole>
+            },{
+                path:"/show-all-reviews",
+                element:<ShowAllReviews></ShowAllReviews>
+            },{
+                path:"/give-review",
+                element:<GiveReview></GiveReview>
+            },{
+                path:"/contact-us",
+                element:<ContactUs></ContactUs>
+            },{
+                path:"/show-all-products",
+                element:<ShowAllProducts></ShowAllProducts>
             },{
                 path:"/dashboard",
                 element:<Dashboard></Dashboard>,
                 children:[
                     {
-                        path:"/show-all-review",
-                        element:<ShowAllReviews></ShowAllReviews>
-                    },{
-                        path:"/show-all-products",
-                        element:<ShowAllProducts></ShowAllProducts>
-                    },{
-                        path:"/pending-requests",
+                        path:"pending-requests",
                         element:<PendingRequests></PendingRequests>,
                     },{
-                        path:"/update-personal-info",
+                        path:"update-personal-info",
                         element:<UpdatePersonalInfo></UpdatePersonalInfo>
                     },{
-                        path:"/show-all-buyers",
+                        path:"show-all-buyers",
                         element:<ShowAllBuyers></ShowAllBuyers>
                     },{
-                        path:"/sells",
+                        path:"sells",
                         element:<Sells></Sells>
                     },{
                         path:"seller-set-profile",
@@ -75,37 +80,37 @@ const router = createBrowserRouter([
                         path:"seller-experimental",
                         element:<SellerExperimental></SellerExperimental>
                     },{
-                        path:"/my-profile-seller",
+                        path:"my-profile-seller",
                         element:<MyProfileSeller></MyProfileSeller>
                     },{
-                        path:"/all-expired-products",
+                        path:"all-expired-products",
                         element:<AllExpiredProducts></AllExpiredProducts>
                     },{
-                        path:"/available-products",
+                        path:"available-products",
                         element:<AllAvailableProducts></AllAvailableProducts>
                     },{
-                        path:"/add-new-transactions",
+                        path:"add-new-transactions",
                         element:<AddNewTransaction></AddNewTransaction>
                     },{
-                        path:"/add-new-products",
+                        path:"add-new-products",
                         element:<AddNewProducts></AddNewProducts>
                     },{
-                        path:"/add-loyal-buyers",
+                        path:"add-loyal-buyers",
                         element:<AddLoyalBuyers></AddLoyalBuyers>
                     },{
-                        path:"/buyer-update-profile",
+                        path:"buyer-update-profile",
                         element:<BuyerUpdateProfile></BuyerUpdateProfile>
                     },{
-                        path:"/buyer-set-profile",
+                        path:"buyer-set-profile",
                         element:<BuyerSetProfile></BuyerSetProfile>
                     },{
-                        path:"/buyer-my-profile",
+                        path:"buyer-my-profile",
                         element:<BuyerMyProfile></BuyerMyProfile>
                     },{
-                        path:"/buyer-my-buyings",
+                        path:"buyer-my-buyings",
                         element:<BuyerMyBuying></BuyerMyBuying>
                     },{
-                        path:"/buyer-experimental-features",
+                        path:"buyer-experimental-features",
                         element:<BuyerExperimentalFeature></BuyerExperimentalFeature>
                     }
                 ]
