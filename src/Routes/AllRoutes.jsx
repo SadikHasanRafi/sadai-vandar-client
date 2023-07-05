@@ -81,7 +81,10 @@ const router = createBrowserRouter([
             },{
                 path:"buyer-my-profile",
                 element:<BuyerMyProfile></BuyerMyProfile>
-            }
+            },{
+                        path:"seller-set-profile",
+                        element:<SellerSetProfile></SellerSetProfile>
+        }
 
 
 
@@ -101,9 +104,6 @@ const router = createBrowserRouter([
                     },{
                         path:"sells",
                         element:<Sells></Sells>
-                    },{
-                        path:"seller-set-profile",
-                        element:<SellerSetProfile></SellerSetProfile>
                     },{
                         path:"seller-experimental",
                         element:<SellerExperimental></SellerExperimental>
