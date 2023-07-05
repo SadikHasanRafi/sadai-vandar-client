@@ -66,7 +66,26 @@ const router = createBrowserRouter([
             },{
                 path:"/show-all-products",
                 element:<ShowAllProducts></ShowAllProducts>
+            },
+
+
+
+
+            //Buyer  Profile
+            {
+                path:"buyer-set-profile",
+                element:<BuyerSetProfile></BuyerSetProfile>
             },{
+                path:"buyer-update-profile",
+                element:<BuyerUpdateProfile></BuyerUpdateProfile>
+            },{
+                path:"buyer-my-profile",
+                element:<BuyerMyProfile></BuyerMyProfile>
+            }
+
+
+
+            ,{
                 path:"/dashboard",
                 element:<Dashboard></Dashboard>,
                 children:[
@@ -106,15 +125,6 @@ const router = createBrowserRouter([
                     },{
                         path:"add-loyal-buyers",
                         element:<AddLoyalBuyers></AddLoyalBuyers>
-                    },{
-                        path:"buyer-update-profile",
-                        element:<BuyerUpdateProfile></BuyerUpdateProfile>
-                    },{
-                        path:"buyer-set-profile",
-                        element:<BuyerSetProfile></BuyerSetProfile>
-                    },{
-                        path:"buyer-my-profile",
-                        element:<BuyerMyProfile></BuyerMyProfile>
                     },{
                         path:"buyer-my-buyings",
                         element:<BuyerMyBuying></BuyerMyBuying>
