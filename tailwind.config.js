@@ -5,8 +5,15 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {},
+  daisyui: {
+    themes: [
+      {
+        sadaiVandar: {
+          "primary": "#00BA88",
+          "base-100": "#ffffff",
+        },
+      },
+    ],
   },
   plugins: [require("daisyui")],
 

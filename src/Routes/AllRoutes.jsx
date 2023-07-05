@@ -27,6 +27,8 @@ import BuyerMyProfile from "../Pages/Dashboard/Buyer/BuyerMyProfile/BuyerMyProfi
 import BuyerExperimentalFeature from "../Pages/Dashboard/Buyer/BuyerExperimentalFeatures/BuyerExperimentalFeature";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import GiveReview from "../Pages/GiveReview/GiveReview";
+import NotFound from "../Pages/NotFound/NotFound";
+import AboutUs from "../Pages/About Us/AboutUs";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +38,9 @@ const router = createBrowserRouter([
             {
                 path:"/",
                 element:<Home></Home>
+            },{
+                path:"*",
+                element:<NotFound></NotFound>
             },{
                 path:"/login",
                 element:<Login></Login>
@@ -54,6 +59,10 @@ const router = createBrowserRouter([
             },{
                 path:"/contact-us",
                 element:<ContactUs></ContactUs>
+            },{
+            },{
+                path:"/about-us",
+                element: <AboutUs></AboutUs>
             },{
                 path:"/show-all-products",
                 element:<ShowAllProducts></ShowAllProducts>

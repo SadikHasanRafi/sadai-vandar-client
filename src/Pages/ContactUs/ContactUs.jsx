@@ -37,15 +37,15 @@ const ContactUs = () => {
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen bg-base-100">
   <div className="hero-content flex-col lg:flex-row">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Contact us</h1>
-      <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <p className="py-6 lg:w-[70%]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
     </div>
 
     
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className="card flex-shrink-0 w-full max-w-md shadow-lg bg-base-100">
       <div className="card-body">
 
         <div className="form-control">
@@ -55,14 +55,14 @@ const ContactUs = () => {
           <input type="text"
             value="{user.email}"
             disabled
-          placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />        
+          placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
 
           <div className="form-control">
           <label className="label">
             <span className="label-text">Your name</span>
           </label>
-          <input type="text" value="user.displayName" disabled placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />        
+          <input type="text" value="user.displayName" disabled placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
 
         <div className="form-control">
@@ -72,7 +72,7 @@ const ContactUs = () => {
           <input type="text"
             value={phoneNumber}
             onChange={handlePhoneNumberChange}
-          placeholder="Type here" className="input input-bordered input-info w-full max-w-xs" />        
+          placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
         <div className="form-control">
           <label className="label">
