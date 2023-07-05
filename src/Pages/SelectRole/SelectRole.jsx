@@ -44,23 +44,28 @@ const SelectRole = () => {
 
 
   return (
-    <div>
-      <span className="inline-flex -space-x-px overflow-hidden rounded-md border bg-white shadow-sm">
-        <button
-          className="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative"
+    <div className='min-h-[70vh] flex justify-center items-center'>
+      <div>
+        <p className='text-center font-semibold mb-5 text-3xl'>Select your role</p>
+<div className='flex flex-col w-[25vw]'>
+<button
+          className=" btn m-3 btn-outline btn-primary h-[5rem]"
           onClick={() => handleButtonClick('shopkeeper')}
           disabled={loading}
         >
           Shopkeeper
         </button>
+
+
         <button
-          className="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative"
+          className=" btn m-3 btn-outline btn-primary h-[5rem]"
           onClick={() => handleButtonClick('buyer')}
           disabled={loading}
         >
           Buyer
         </button>
-      </span>
+</div>
+      </div>
       {loading && <p>Loading...</p>}
     </div>
   );

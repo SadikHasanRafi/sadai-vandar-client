@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { createUser } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -20,10 +20,10 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await createUser(email, password).then((result) => {
+      await login(email, password).then((result) => {
         // const user = result.user
         if (result.user) {
-          navigate("/set-role");
+          navigate("/dashboard");
         }
       });
     } catch (error) {

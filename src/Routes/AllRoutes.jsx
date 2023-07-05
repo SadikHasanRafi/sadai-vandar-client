@@ -31,118 +31,138 @@ import NotFound from "../Pages/NotFound/NotFound";
 import AboutUs from "../Pages/About Us/AboutUs";
 
 const router = createBrowserRouter([
-    {
-        path:"/",
-        element:<MainLayout></MainLayout>,
-        children:[
-            {
-                path:"/",
-                element:<Home></Home>
-            },{
-                path:"*",
-                element:<NotFound></NotFound>
-            },{
-                path:"/login",
-                element:<Login></Login>
-            },{
-                path:"/signup",
-                element:<Signup></Signup>
-            },{
-                path:"/set-role",
-                element:<SelectRole></SelectRole>
-            },{
-                path:"/show-all-reviews",
-                element:<ShowAllReviews></ShowAllReviews>
-            },{
-                path:"/give-review",
-                element:<GiveReview></GiveReview>
-            },{
-                path:"/contact-us",
-                element:<ContactUs></ContactUs>
-            },{
-                path:"/about-us",
-                element: <AboutUs></AboutUs>
-            },{
-                path:"/show-all-products",
-                element:<ShowAllProducts></ShowAllProducts>
-            },
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "*",
+        element: <NotFound></NotFound>,////////
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,/////////
+      },
+      {
+        path: "/signup",
+        element: <Signup></Signup>,//////////
+      },
+      {
+        path: "/set-role",
+        element: <SelectRole></SelectRole>,/////////
+      },
+      {
+        path: "/show-all-reviews",
+        element: <ShowAllReviews></ShowAllReviews>,
+      },
+      {
+        path: "/give-review",
+        element: <GiveReview></GiveReview>,//////////
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,////////////
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>,///////////
+      },
+      {
+        path: "/show-all-products",
+        element: <ShowAllProducts></ShowAllProducts>,
+      },
+
+      {
+        path: "buyer-set-profile",
+        element: <BuyerSetProfile></BuyerSetProfile>,//////////
+      },
 
 
+      {
+        path: "seller-set-profile",
+        element: <SellerSetProfile></SellerSetProfile>,///////////
+      },
 
-
-            //Buyer  Profile
-            {
-                path:"buyer-set-profile",
-                element:<BuyerSetProfile></BuyerSetProfile>
-            },{
-                        path:"seller-set-profile",
-                        element:<SellerSetProfile></SellerSetProfile>
-        },
-
-        
-        
-        
-        
-        {
-                path:"/dashboard",
-                element:<Dashboard></Dashboard>,
-                children:[
-                    {
-                        path:"buyer-my-profile",
-                        element:<BuyerMyProfile></BuyerMyProfile>
-                    },{
-                        path:"pending-requests",
-                        element:<PendingRequests></PendingRequests>,
-                    },{
-                        path:"update-personal-info",
-                        element:<UpdatePersonalInfo></UpdatePersonalInfo>
-                    },{
-                        path:"show-all-buyers",
-                        element:<ShowAllBuyers></ShowAllBuyers>
-                    },{
-                        path:"sells",
-                        element:<Sells></Sells>
-                    },{
-                        path:"seller-experimental",
-                        element:<SellerExperimental></SellerExperimental>
-                    },{
-                        path:"my-profile-seller",
-                        element:<MyProfileSeller></MyProfileSeller>
-                    },{
-                        path:"all-expired-products",
-                        element:<AllExpiredProducts></AllExpiredProducts>
-                    },{
-                        path:"available-products",
-                        element:<AllAvailableProducts></AllAvailableProducts>
-                    },{
-                        path:"add-new-transactions",
-                        element:<AddNewTransaction></AddNewTransaction>
-                    },{
-                        path:"add-new-products",
-                        element:<AddNewProducts></AddNewProducts>
-                    },{
-                        path:"add-loyal-buyers",
-                        element:<AddLoyalBuyers></AddLoyalBuyers>
-                    },{
-                        path:"buyer-my-buyings",
-                        element:<BuyerMyBuying></BuyerMyBuying>
-                    },{
-                        path:"buyer-experimental-features",
-                        element:<BuyerExperimentalFeature></BuyerExperimentalFeature>
-                    },{
-                        path:"buyer-update-profile",
-                        element:<BuyerUpdateProfile></BuyerUpdateProfile>
-                    }
-                ]
-            },{
-                path:"/approval",
-                element:<Approval></Approval>
-            },{
-                path:"*",
-                element:<p>404 page</p>
-            }
-        ]
-    }
-])
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,/////////
+        children: [
+          {
+            path: "buyer-my-profile",
+            element: <BuyerMyProfile></BuyerMyProfile>,
+          },
+          {
+            path: "pending-requests",
+            element: <PendingRequests></PendingRequests>,
+          },
+          {
+            path: "update-personal-info",
+            element: <UpdatePersonalInfo></UpdatePersonalInfo>,
+          },
+          {
+            path: "show-all-buyers",
+            element: <ShowAllBuyers></ShowAllBuyers>,
+          },
+          {
+            path: "sells",
+            element: <Sells></Sells>,
+          },
+          {
+            path: "seller-experimental",
+            element: <SellerExperimental></SellerExperimental>,
+          },
+          {
+            path: "my-profile-seller",
+            element: <MyProfileSeller></MyProfileSeller>,
+          },
+          {
+            path: "all-expired-products",
+            element: <AllExpiredProducts></AllExpiredProducts>,
+          },
+          {
+            path: "available-products",
+            element: <AllAvailableProducts></AllAvailableProducts>,
+          },
+          {
+            path: "add-new-transactions",
+            element: <AddNewTransaction></AddNewTransaction>,
+          },
+          {
+            path: "add-new-products",
+            element: <AddNewProducts></AddNewProducts>,
+          },
+          {
+            path: "add-loyal-buyers",
+            element: <AddLoyalBuyers></AddLoyalBuyers>,
+          },
+          {
+            path: "buyer-my-buyings",
+            element: <BuyerMyBuying></BuyerMyBuying>,
+          },
+          {
+            path: "buyer-experimental-features",
+            element: <BuyerExperimentalFeature></BuyerExperimentalFeature>,
+          },
+          {
+            path: "buyer-update-profile",
+            element: <BuyerUpdateProfile></BuyerUpdateProfile>,
+          },
+        ],
+      },
+      {
+        path: "/approval",
+        element: <Approval></Approval>,///////
+      },
+      {
+        path: "*",
+        element: <NotFound></NotFound>,////////
+      },
+    ],
+  },
+]);
 
 export default router;
