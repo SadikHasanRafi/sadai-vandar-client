@@ -6,7 +6,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  const activeLinkStyle = ({ isActive }) => isActive ? "border-b-4 border-primary" : "";
+  const activeLinkStyle = ({ isActive }) => isActive ? "border-l-4 border-primary block box-content text-primary px-4 py-2 text-gray-500 hover:text-primary transition" : "block px-4 py-2 text-gray-500 hover:text-primary transition";
   const [role, setRole] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,27 +44,27 @@ const Dashboard = () => {
                 {role === "shopkeeper" && (
                   <>
                     <li>
-                      <NavLink to="sells" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+          <li><NavLink to="my-profile-seller" className={activeLinkStyle}>
+            Profile</NavLink></li>
+                      <NavLink to="sells" className={activeLinkStyle}>
                         sells
                       </NavLink>
                     </li>
-                    <li><NavLink to="seller-experimental" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+                    <li><NavLink to="seller-experimental" className={activeLinkStyle}>
             seller-experimental</NavLink></li>
-          <li><NavLink to="my-profile-seller" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
-            my-profile-seller</NavLink></li>
-          <li><NavLink to="all-expired-products" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
-            all-expired-products</NavLink></li>
-          <li><NavLink to="available-products" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
-            available-products</NavLink></li>
-          <li><NavLink to="add-new-transactions" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+          <li><NavLink to="all-expired-products" className={activeLinkStyle}>
+            All Expired Products</NavLink></li>
+          <li><NavLink to="available-products" className={activeLinkStyle}>
+            All Available Products</NavLink></li>
+          <li><NavLink to="add-new-transactions" className={activeLinkStyle}>
             add-new-transactions</NavLink></li>
-          <li><NavLink to="add-new-products" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
-            add-new-products</NavLink></li>
-          <li><NavLink to="add-loyal-buyers" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+          <li><NavLink to="add-new-products" className={activeLinkStyle}>
+            Add New Product</NavLink></li>
+          <li><NavLink to="add-loyal-buyers" className={activeLinkStyle}>
             add-loyal-buyers</NavLink></li>
-          <li><NavLink to="update-personal-info" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+          <li><NavLink to="update-personal-info" className={activeLinkStyle}>
             update-personal-info</NavLink></li>
-          <li><NavLink to="show-all-buyers" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+          <li><NavLink to="show-all-buyers" className={activeLinkStyle}>
             show-all-buyers</NavLink></li>
                   </>
                 )}
@@ -72,15 +72,15 @@ const Dashboard = () => {
                 {role === "buyer" && (
                   <>
                     <li>
-                      <NavLink to="buyer-my-buyings" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+                      <NavLink to="buyer-my-buyings" className={activeLinkStyle}>
                         buyer-my-buyings
                       </NavLink>
                     </li>
-                    <li><NavLink to="buyer-experimental-features" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+                    <li><NavLink to="buyer-experimental-features" className={activeLinkStyle}>
           buyer-experimental-features</NavLink></li>
-        <li><NavLink to="buyer-update-profile" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+        <li><NavLink to="buyer-update-profile" className={activeLinkStyle}>
           buyer-update-profile</NavLink></li>
-        <li><NavLink to="buyer-my-profile" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+        <li><NavLink to="buyer-my-profile" className={activeLinkStyle}>
           buyer-my-profile</NavLink></li>
                   </>
                 )}
@@ -88,12 +88,12 @@ const Dashboard = () => {
                 {role === "super-admin" && (
                   <>
                     <li>
-                      <NavLink to="pending-requests" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+                      <NavLink to="pending-requests" className={activeLinkStyle}>
                         pending-requests
                       </NavLink>
-                      <li><NavLink to="show-all-buyers" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+                      <li><NavLink to="show-all-buyers" className={activeLinkStyle}>
           show-all-buyers</NavLink></li>
-        <li><NavLink to="show-all-reviews" className={`block px-4 py-2 text-gray-500 hover:text-primary ${activeLinkStyle}`}>
+        <li><NavLink to="show-all-reviews" className={activeLinkStyle}>
           show-all-reviews</NavLink></li>
                     </li>
                     {/* ...other super admin menu items */}

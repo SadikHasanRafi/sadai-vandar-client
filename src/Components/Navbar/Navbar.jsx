@@ -12,6 +12,7 @@ const Navbar = () => {
     navigate("/");
   };
 
+  console.log(user)
   const activeLinkStyle = ({ isActive }) =>
     isActive ? "border-b-4 border-primary" : "";
 
