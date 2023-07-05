@@ -60,7 +60,6 @@ const router = createBrowserRouter([
                 path:"/contact-us",
                 element:<ContactUs></ContactUs>
             },{
-            },{
                 path:"/about-us",
                 element: <AboutUs></AboutUs>
             },{
@@ -76,23 +75,22 @@ const router = createBrowserRouter([
                 path:"buyer-set-profile",
                 element:<BuyerSetProfile></BuyerSetProfile>
             },{
-                path:"buyer-update-profile",
-                element:<BuyerUpdateProfile></BuyerUpdateProfile>
-            },{
-                path:"buyer-my-profile",
-                element:<BuyerMyProfile></BuyerMyProfile>
-            },{
                         path:"seller-set-profile",
                         element:<SellerSetProfile></SellerSetProfile>
-        }
+        },
 
-
-
-            ,{
+        
+        
+        
+        
+        {
                 path:"/dashboard",
                 element:<Dashboard></Dashboard>,
                 children:[
                     {
+                        path:"buyer-my-profile",
+                        element:<BuyerMyProfile></BuyerMyProfile>
+                    },{
                         path:"pending-requests",
                         element:<PendingRequests></PendingRequests>,
                     },{
@@ -131,6 +129,9 @@ const router = createBrowserRouter([
                     },{
                         path:"buyer-experimental-features",
                         element:<BuyerExperimentalFeature></BuyerExperimentalFeature>
+                    },{
+                        path:"buyer-update-profile",
+                        element:<BuyerUpdateProfile></BuyerUpdateProfile>
                     }
                 ]
             },{

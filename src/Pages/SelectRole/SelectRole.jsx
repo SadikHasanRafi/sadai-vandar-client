@@ -61,7 +61,7 @@ const SelectRole = () => {
           Buyer
         </button>
       </span>
-      {loading && <div>Loading...</div>}
+      {loading && <p>Loading...</p>}
     </div>
   );
 };
