@@ -1,8 +1,6 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../../Context/AuthProvider";
+
 
 const BuyerSetProfile = () => {
-    const { user } = useContext(AuthContext);
 
     return (
         <div className="min-h-screen flex justify-center">
@@ -19,27 +17,24 @@ const BuyerSetProfile = () => {
 
 
                 
-                <div className="col-span-3">
-                    <label className="block mb-2" htmlFor="">Email</label>
-                    <input disabled type="text" value="{user.email}" className="input input-bordered w-full border-base-300 focus:border-primary-focus focus:outline-none"/>
-                </div>
+
 
 
                                 
                 <div className="col-span-2">
                     <label className="block mb-2" htmlFor="">Phone Number:</label>
-                    <input type="number" placeholder="phone number" className="input input-bordered w-full border-base-300 focus:border-primary-focus focus:outline-none"/>
+                    <input type="text" placeholder="phone number" className="input input-bordered w-full border-base-300 focus:border-primary-focus focus:outline-none"/>
                 </div>
 
 
 
-                <div className="col-span-2">
+                <div className="col-span-3">
                     <label className="block mb-2" htmlFor="">Location:</label>
                     <input type="text" placeholder="street, city" className="input input-bordered w-full border-base-300 focus:border-primary-focus focus:outline-none"/>
                 </div>
 
 
-                <div className="col-span-3">
+                <div className="col-span-5">
                     <label className="block mb-2" htmlFor="">Precise Location:</label>
                     <input type="text" placeholder="A/B street, city" className="input input-bordered w-full border-base-300 focus:border-primary-focus focus:outline-none"/>
                 </div>
