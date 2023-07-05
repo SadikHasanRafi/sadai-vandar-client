@@ -6,7 +6,7 @@ const BuyerMyProfile = () => {
         <div className='min-h-screen'>
             <div className="my-20">
 
-            <p className='text-center text-3xl font-semibold mb-5'>Welcome Back</p>
+            <p className='text-center text-3xl font-semibold mb-5'>Welcome to your profile</p>
             </div>
         </div>
     );
