@@ -52,25 +52,26 @@ const Dashboard = () => {
               <>
                 {role === "shopkeeper" && (
                   <>
-                    <li>
-                        <NavLink
-                          to="my-profile-seller"
-                          className={activeLinkStyle}>
-                          Profile
-                        </NavLink>
-                      </li>
-                      <li>
-                      <NavLink to="sells" className={activeLinkStyle}>
-                        Sells
-                      </NavLink>
-                      </li>
-                    {/* <li><NavLink to="seller-experimental" className={activeLinkStyle}>
-            seller-experimental</NavLink></li> */}
+                    {" "}
                     <li>
                       <NavLink to="shop-details" className={activeLinkStyle}>
                         Shop Status
                       </NavLink>
                     </li>
+                    <li>
+                      <NavLink
+                        to="my-profile-seller"
+                        className={activeLinkStyle}>
+                        Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="sells" className={activeLinkStyle}>
+                        Sells
+                      </NavLink>
+                    </li>
+                    {/* <li><NavLink to="seller-experimental" className={activeLinkStyle}>
+            seller-experimental</NavLink></li> */}
                     <li>
                       <NavLink
                         to="all-expired-products"
@@ -107,7 +108,9 @@ const Dashboard = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="show-all-buyers" className={activeLinkStyle}>
+                      <NavLink
+                        to="show-all-sellers"
+                        className={activeLinkStyle}>
                         Show All Buyers
                       </NavLink>
                     </li>
@@ -157,16 +160,16 @@ const Dashboard = () => {
                       </NavLink>
                       <li>
                         <NavLink
-                          to="show-all-buyers"
+                          to="show-all-sellers"
                           className={activeLinkStyle}>
-                          Show All Buyers
+                          All Sellers
                         </NavLink>
                       </li>
                       <li>
                         <NavLink
                           to="show-all-reviews"
                           className={activeLinkStyle}>
-                          Show All Review
+                          All Reviews
                         </NavLink>
                       </li>
                     </li>

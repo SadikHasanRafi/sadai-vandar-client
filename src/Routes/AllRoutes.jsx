@@ -10,7 +10,7 @@ import Approval from "../Pages/Approval/Approval";
 import ShowAllReviews from "../Pages/Dashboard/SuperAdmin/ShowAllReviews/ShowAllReviews";
 import PendingRequests from "../Pages/Dashboard/SuperAdmin/PendingRequests/PendingRequests";
 import UpdatePersonalInfo from "../Pages/Dashboard/Seller/UpdatePersonalInfo/UpdatePersonalInfo";
-import ShowAllBuyers from "../Pages/Dashboard/Seller/ShowAllBuyers/ShowAllBuyers";
+import ShowAllSellers from "../Pages/Dashboard/Seller/ShowAllSellers/ShowAllSellers";
 import Sells from "../Pages/Dashboard/Seller/Sells/Sells";
 import SellerSetProfile from "../Pages/Dashboard/Seller/SellerSetProfile/SellerSetProfile";
 import SellerExperimental from "../Pages/Dashboard/Seller/SellerExperimental/SellerExperimental";
@@ -98,8 +98,8 @@ const router = createBrowserRouter([
         element: <Dashboard></Dashboard>,/////////
         children: [
           {
-            path: "buyer-my-profile",
-            element: <BuyerMyProfile></BuyerMyProfile>,
+            path: "show-all-reviews",
+            element: <ShowAllReviews></ShowAllReviews>,
           },
           {
             path: "pending-requests",
@@ -110,8 +110,8 @@ const router = createBrowserRouter([
             element: <UpdatePersonalInfo></UpdatePersonalInfo>,
           },
           {
-            path: "show-all-buyers",
-            element: <ShowAllBuyers></ShowAllBuyers>,
+            path: "show-all-sellers",
+            element: <ShowAllSellers></ShowAllSellers>,
           },
           {
             path: "sells",

@@ -114,7 +114,7 @@ const AddNewTransaction = () => {
           "http://localhost:5000/transactions",
           data
         );
-        // console.log("🚀 ~ file: AddNewTransaction.jsx:118 ~ handleOnSubmit ~ data:", data)
+        console.log("🚀 ~ file: AddNewTransaction.jsx:118 ~ handleOnSubmit ~ data:", data)
 
         console.log("Transaction created successfully:", response.data);
       }

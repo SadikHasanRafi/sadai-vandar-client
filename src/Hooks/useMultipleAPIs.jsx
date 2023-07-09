@@ -40,4 +40,5 @@ const useMultipleAPIs = () => {
   return { products, registeredUsers, rolesAndReviews, shopkeepers, transactions, isLoading, error };
 };
 
+
 export default useMultipleAPIs;

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 // import {
 //   LineChart,
 //   Line,
@@ -19,13 +19,32 @@ import {
   Tooltip,
 } from "recharts";
 import useMultipleAPIs from "../../../../Hooks/useMultipleAPIs";
+import moment from "moment";
 
 const ShopDetails = () => {
-  const { transactions } = useMultipleAPIs()
-  console.log(transactions.time)
+  const { transactions } = useMultipleAPIs();
+  const adder = 0;
 
-  const x = transactions.filter((transaction) => console.log(transaction))
 
+  console.log(transactions)
+  // transactions.map((transaction) => console.log(transaction))
+  // const x = transactions.filter(
+  //   (transaction) =>
+  //     // console.log(transaction)
+  //     moment(transaction.time).format("ll") === moment(new Date()).format("ll")
+
+  // );
+
+  const todaysProfit = transactions.filter((transaction) => {
+    if(transaction?.price){
+      if(moment(transaction.time).format("ll") === moment(new Date()).format("ll")){
+        return transaction;
+      }
+    }
+  })
+
+  // console.log("this is the kidnapper", x)
+  // console.log(x)
   const data = [
     {
       name: "Page A",
@@ -162,37 +181,46 @@ const ShopDetails = () => {
           </div>
           <div className="w-full bg-black bg-opacity-[2.5%]  p-7 rounded-lg">
             <p className="text-xl font-semibold text-black">Today's Sales</p>
-            <p className="text-4xl mt-2 font-bold text-success">Tk. 2500</p>
+            {/* { x.map((y, index)=> ( */}
+              <p className="text-4xl mt-2 font-bold text-success">Tk. 2500</p>
+            {/* )) } */}
           </div>
           <div className="w-full bg-black bg-opacity-[2.5%]  p-7 rounded-lg">
             {" "}
             <p className="text-xl font-semibold text-black">Today's Profit</p>
-            <p className="text-4xl mt-2 font-bold text-success">Tk. 2500</p>
+            <p className="text-4xl mt-2 font-bold text-success">{
+              todaysProfit.map((transactionProfit) => {
+                // <p>{transactionProfit?.price + adder}</p>
+                console.log(transactionProfit?.price + adder)
+              })
+            }</p>
           </div>
           <div className="w-full bg-black bg-opacity-[2.5%] row-span-2 p-7 rounded-lg">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart width={800} height={800}>
-              <Pie
-                data={dataTwo}
-                cx="50%"
-                cy="50%"
-                labelLine={true}
-                label={renderCustomizedLabel}
-                outerRadius={140}
-                fill="#8884d8"
-                dataKey="value">
-                {dataTwo.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart width={800} height={800}>
+                <Pie
+                  data={dataTwo}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={true}
+                  label={renderCustomizedLabel}
+                  outerRadius={140}
+                  fill="#8884d8"
+                  dataKey="value">
+                  {dataTwo.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
           </div>
           <div className="w-full bg-black bg-opacity-[2.5%]  p-7 rounded-lg col-span-2">
-              <p className="text-xl font-semibold text-black">Today's Number of sales</p>
+            <p className="text-xl font-semibold text-black">
+              Today's Number of sales
+            </p>
             <AreaChart
               width={900}
               height={300}
