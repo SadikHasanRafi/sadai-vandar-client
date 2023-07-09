@@ -29,6 +29,8 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import GiveReview from "../Pages/GiveReview/GiveReview";
 import NotFound from "../Pages/NotFound/NotFound";
 import AboutUs from "../Pages/About Us/AboutUs";
+import ShopDetails from "../Pages/Dashboard/Seller/ShopDetails/ShopDetails";
+import ShowAllProduct from "../Pages/ShowAllProduct/ShowAllProduct";
 
 const router = createBrowserRouter([
   {
@@ -73,7 +75,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/show-all-products",
-        element: <ShowAllProducts></ShowAllProducts>,
+        element: <ShowAllProduct></ShowAllProduct>,
       },
 
       {
@@ -85,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "seller-set-profile",
         element: <SellerSetProfile></SellerSetProfile>,///////////
+      },
+      {
+        path: "show-all-products",
+        element: <ShowAllProducts></ShowAllProducts>,///////////
       },
 
       {
@@ -117,23 +123,27 @@ const router = createBrowserRouter([
           },
           {
             path: "my-profile-seller",
-            element: <MyProfileSeller></MyProfileSeller>,
+            element: <MyProfileSeller></MyProfileSeller>,///////
           },
           {
             path: "all-expired-products",
-            element: <AllExpiredProducts></AllExpiredProducts>,
+            element: <AllExpiredProducts></AllExpiredProducts>,///////////
           },
           {
             path: "available-products",
-            element: <AllAvailableProducts></AllAvailableProducts>,
+            element: <AllAvailableProducts></AllAvailableProducts>,//////////////
           },
           {
             path: "add-new-transactions",
             element: <AddNewTransaction></AddNewTransaction>,
           },
           {
+            path: "shop-details",
+            element: <ShopDetails></ShopDetails>,
+          },
+          {
             path: "add-new-products",
-            element: <AddNewProducts></AddNewProducts>,
+            element: <AddNewProducts></AddNewProducts>,///////////////
           },
           {
             path: "add-loyal-buyers",

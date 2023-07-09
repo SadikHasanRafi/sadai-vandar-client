@@ -1,6 +1,8 @@
-import  { useState } from 'react';
+import  { useContext, useState } from 'react';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const GiveReview = () => {
+  const { user } = useContext(AuthContext)
   const [inputValue, setInputValue] = useState('');
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState('');
@@ -90,7 +92,7 @@ const GiveReview = () => {
             <span className="label-text">Your email</span>
           </label>
           <input type="text"
-            value="{user.email}"
+            value={user?.email || "Email"}
             disabled
           placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
@@ -101,7 +103,7 @@ const GiveReview = () => {
           <label className="label">
             <span className="label-text">Your name</span>
           </label>
-          <input type="text" value="{user.displayName}" disabled placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
+          <input type="text" value={user?.displayName || "Anonymous"} disabled placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
 
         <div className="form-control">

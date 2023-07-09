@@ -14,9 +14,8 @@ const ApprovalPage = () => {
     const fetchData = async () => {
       try {
         // Fetch shopkeeper data by UID
-        const response = await axios.get(`http://localhost:5000/shopkeeper/${user.uid}`);
+        const response = await axios.get(`http://localhost:5000/shopkeeper/${user?.uid}`);
         const shopkeeperData = response.data;
-        console.log(shopkeeperData); // Log the received data
 
         // Check if shopkeeper is approved
         if (shopkeeperData && shopkeeperData.isApproved) {
@@ -34,7 +33,7 @@ const ApprovalPage = () => {
     return () => {
       // Perform clean-up tasks if needed
     };
-  }, [user.uid]);
+  }, [user?.uid]);
 
   const handleOnClick = () => {
     navigate("/dashboard");

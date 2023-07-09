@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Context/AuthProvider';
 
+
 const SellerSetProfile = () => {
   const [location, setLocation] = useState('');
   const [preciseLocation, setPreciseLocation] = useState('');
@@ -13,7 +14,6 @@ const SellerSetProfile = () => {
     const navigate = useNavigate()
     const {user} = useContext(AuthContext)
 
-
     const handleFormSubmit = async (e) => {
       e.preventDefault();
   
@@ -21,7 +21,7 @@ const SellerSetProfile = () => {
         // Create an object with the data to be sent
         const data = {
           location,
-          uid: user.uid,
+          uid: user?.uid,
           isApproved: false,
           loyalUsers: [],
           anonymousBuyer: [],
@@ -38,8 +38,6 @@ const SellerSetProfile = () => {
           registeredBuyerID: [],
           registerID,
         };
-        console.log(data)
-        
         // Send a POST request to the /shopkeeper API
       //   const response = await axios.post('https://sadai-vandar-server.onrender.com/shopkeeper', data);
         const response = await axios.post('http://localhost:5000/shopkeeper', data);

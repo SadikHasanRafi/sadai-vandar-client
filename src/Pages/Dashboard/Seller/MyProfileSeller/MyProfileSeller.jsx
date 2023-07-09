@@ -3,37 +3,64 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../Context/AuthProvider";
 import Loading from "../../../../Components/Loading/Loading";
 import bgImg from "../../../../assets/profile-bg.jpg";
+// import useMultipleAPIs from "../../../../Hooks/useMultipleAPIs";
 
 const MyProfileSeller = () => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
+  // const { shopkeepers } = useMultipleAPIs()
+  const [shopkeeper, setShopkeeper] = useState([]);
+
 
   useEffect(() => {
-    const fetchSellerData = async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/shopkeeper/${user.uid}`
+          `http://localhost:5000/products/${user?.uid}`
         );
-        const sellerData = response.data;
-        setData(sellerData);
-      } catch (error) {
-        console.log(error);
-      } finally {
+        if (response.data) {
+          const filteredData = response?.data.filter((product) => {
+            const today = new Date();
+            const expireDate = new Date(product?.expireDate);
+            const isValid = expireDate > today;
+            const isShopProduct = product?.shopUID === user?.uid;
+            return isValid && isShopProduct;
+          });
+          setData(filteredData);
+        }
         setIsLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
       }
     };
 
-    fetchSellerData();
+    const fetchUser = async () => {
+      try {
+        const responseShopkeepers = await axios.get("http://localhost:5000/shopkeepers");
+        responseShopkeepers.data.map((k)=>{
+          if (k.uid === user?.uid) {
+            console.log("🚀 ~ file: MyProfileSeller.jsx:43 ~ responseShopkeepers.data.map ~ k:", k)
+            
+            setShopkeeper(k)
 
-    return () => {};
-  }, [user.uid]);
+          }
+        })
+        }
+        // setIsLoading(false);
+       catch (error) {
+        console.error("Failed to fetch products:", error);
+      }
+    };
 
-  if (isLoading) {
-    return;
-  }
 
-  console.log(data)
+      fetchUser()
+
+
+    fetchData();
+  }, [user]);
+
+
 
   return isLoading ? (
     <Loading></Loading>
@@ -47,10 +74,10 @@ const MyProfileSeller = () => {
           <div>
             <div>
               <p className="font-semibold text-3xl">
-                Welcome Back!{" "}
-                <span className="text-primary">{data.ownerName}.</span>
+                Welcome Back!
+                <span className="text-primary"> {shopkeeper?.ownerName}.</span>
               </p>
-
+ 
 
 
 
@@ -71,35 +98,35 @@ const MyProfileSeller = () => {
         <dl className="divide-y divide-gray-100">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Your Name</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.ownerName}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.ownerName}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Email Address</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.email}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.email}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Phone Number</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.phoneNumber}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.phoneNumber}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Shop</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.shopName}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.shopName}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Location</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.location}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.location}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Precise Location</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.preciseLocation}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{shopkeeper?.preciseLocation}</dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="font-medium leading-6 text-gray-900">Available Products</dt>
-            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.shopProducts.length}</dd>
+            <dd className="mt-1 leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data?.length}</dd>
           </div>
         </dl>
       </div>
-    </div>
+    </div> 
 
             </div>
           </div>

@@ -3,8 +3,8 @@ import React from 'react';
 
 const Loading = () => {
     return (
-        <div>
-            <span className="loading loading-ring loading-md"></span>
+        <div className=' w-full h-[20vh] flex justify-center items-center'>
+            <span className="loading loading-spinner loading-md text-primary"></span>
         </div>
     );
 };

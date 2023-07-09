@@ -1,8 +1,9 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-
+import profile from "../../assets/profile.svg"
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -12,44 +13,33 @@ const Navbar = () => {
     navigate("/");
   };
 
-  console.log(user)
   const activeLinkStyle = ({ isActive }) =>
-    isActive ? "border-b-4 border-primary" : "";
+    isActive
+      ? "rounded-none text-primary btn capitalize btn-ghost hover:bg-white text-[16px] btn-sm"
+      : "rounded-none hover:text-primary btn capitalize btn-ghost hover:bg-white text-[16px] btn-sm";
 
   const navItems = (
     <>
-      <li>
-        <NavLink className={activeLinkStyle} to="/">
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className={activeLinkStyle} to="/contact-us">
-          Contact
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className={activeLinkStyle} to="about-us">
-          About Us
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className={activeLinkStyle} to="/give-review">
-          Reviews
-        </NavLink>
-      </li>
+      <NavLink className={activeLinkStyle} to="/">
+        Home
+      </NavLink>
+      <NavLink className={activeLinkStyle} to="/contact-us">
+        Contact
+      </NavLink>
+      <NavLink className={activeLinkStyle} to="about-us">
+        About Us
+      </NavLink>
+      <NavLink className={activeLinkStyle} to="/give-review">
+        Review
+      </NavLink>
       {!user && (
         <>
-          <li>
-            <NavLink className={activeLinkStyle} to="/login">
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={activeLinkStyle} to="/signup">
-              Sign Up
-            </NavLink>
-          </li>
+          <NavLink className={activeLinkStyle} to="/login">
+            Login
+          </NavLink>
+          <NavLink className={activeLinkStyle} to="/signup">
+            Sign Up
+          </NavLink>
         </>
       )}
     </>
@@ -90,34 +80,25 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="mr-3">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input border-gray-300 w-full sm:w-auto"
-            />
-          </div>
+          <NavLink className={activeLinkStyle} to="show-all-products">All Products</NavLink>
           {user && (
             <>
               <div className="dropdown dropdown-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
-                    <img src="https://cdn.donmai.us/original/52/bf/52bf62f501feeda384c15cf20f4dd168.png" />
+                    <img src={profile} />
                   </div>
                 </label>
                 <ul
                   tabIndex={0}
                   className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+
                   <li>
-                    <Link to="/buyer-my-profile" className="justify-between">
-                      Profile
-                    </Link>
+                  <Link to="/dashboard">Dashboard</Link>
                   </li>
+
                   <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <button onClick={() => handleLogOut()}>Logout</button>
+                  <button onClick={() => handleLogOut()}>Logout</button>
                   </li>
                 </ul>
               </div>

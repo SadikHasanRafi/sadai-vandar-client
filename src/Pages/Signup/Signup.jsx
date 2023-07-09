@@ -2,6 +2,7 @@ import "react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { IconBrandGoogle } from "@tabler/icons-react";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -50,6 +51,7 @@ const Signup = () => {
                 className="input input-bordered"
                 value={email}
                 onChange={handleEmailChange}
+                required
               />
             </div>
             <div className="form-control">
@@ -62,6 +64,7 @@ const Signup = () => {
                 className="input input-bordered"
                 value={password}
                 onChange={handlePasswordChange}
+                required
               />
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
@@ -73,6 +76,13 @@ const Signup = () => {
             <div className="form-control mt-6">
               <button className="btn btn-primary">Sign up</button>
             </div>
+            <div className="divider">or</div>
+              <button className="btn btn-primary btn-outline w-full">
+                
+                Sign Up with google <IconBrandGoogle size={16}></IconBrandGoogle>
+              </button>
+    
+
           </form>
         </div>
       </div>

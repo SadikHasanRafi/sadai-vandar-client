@@ -2,6 +2,7 @@ import  { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import Loading from '../../Components/Loading/Loading';
 
 const SelectRole = () => {
   // const [role, setRole] = useState('');
@@ -17,7 +18,7 @@ const SelectRole = () => {
       setLoading(true);
 
       const roleData = {
-        uid: user.uid,
+        uid: user?.uid,
         displayName: user.displayName,
         serviceReview: "",
         phone:user.phoneNumber,
@@ -44,29 +45,32 @@ const SelectRole = () => {
 
 
   return (
-    <div className='min-h-[70vh] flex justify-center items-center'>
+    <div className='min-h-[80vh] flex justify-center items-center'>
+      
+      {loading ? <Loading></Loading>
+      :
       <div>
-        <p className='text-center font-semibold mb-5 text-3xl'>Select your role</p>
+      <p className='text-center font-semibold mb-5 text-3xl'>Select your role</p>
 <div className='flex flex-col w-[25vw]'>
 <button
-          className=" btn m-3 btn-outline btn-primary h-[5rem]"
-          onClick={() => handleButtonClick('shopkeeper')}
-          disabled={loading}
-        >
-          Shopkeeper
-        </button>
+        className=" btn m-3 btn-outline btn-primary h-[5rem]"
+        onClick={() => handleButtonClick('shopkeeper')}
+        disabled={loading}
+      >
+        Shop Keeper
+      </button>
 
 
-        <button
-          className=" btn m-3 btn-outline btn-primary h-[5rem]"
-          onClick={() => handleButtonClick('buyer')}
-          disabled={loading}
-        >
-          Buyer
-        </button>
+      <button
+        className=" btn m-3 btn-outline btn-primary h-[5rem]"
+        onClick={() => handleButtonClick('buyer')}
+        disabled={loading}
+      >
+        Buyer
+      </button>
 </div>
-      </div>
-      {loading && <p>Loading...</p>}
+    </div>
+    }
     </div>
   );
 };

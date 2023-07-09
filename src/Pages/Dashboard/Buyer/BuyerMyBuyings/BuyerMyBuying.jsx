@@ -1,15 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import useMultipleAPIs from "../../../../Hooks/useMultipleAPIs";
+import { AuthContext } from "../../../../Context/AuthProvider";
 
 const BuyerMyBuying = () => {
-  const [data, setData] = useState([]);
+  const { registeredUsers , transactions } = useMultipleAPIs()
+  // console.log("🚀 ~ file: BuyerMyBuying.jsx:8 ~ BuyerMyBuying ~ transactions:", transactions)
+  // console.log("🚀 ~ file: BuyerMyBuying.jsx:8 ~ BuyerMyBuying ~ registedUsers:", registeredUsers)
+  const { user } = useContext(AuthContext);
+  // console.log("🚀 ~ file: BuyerMyBuying.jsx:9 ~ BuyerMyBuying ~ user:", user?.uid)
+  
+  const x = registeredUsers.filter((usr) => user?.uid===usr?.uid)
+  console.log("🚀 ~ file: BuyerMyBuying.jsx:13 ~ BuyerMyBuying ~ x:", x)
+  
 
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/transactions")
+  //     .then((res) => res.json())
+  //     .then((json) => setData(json));
+  // }, []);
 
-  console.log(data)
 
   return (
     <div className="grid justify-center w-full">
@@ -35,18 +44,19 @@ const BuyerMyBuying = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((datum, index) => (
-              <tr key={index}>
-                <th>{index + 1}</th>
-                <td>{datum.name.common}</td>
-                <td>{datum.population}</td>
-                <td>{datum.region}</td>
-                <td>{datum.area}</td>
-                <td>{datum.flag}</td>
-                <td>{datum.startOfWeek}</td>
-                <td><button onClick={()=>window.my_modal_3.showModal()} className="btn">See Details</button></td>
-              </tr>
-            ))}
+            {/* {data.map((datum, index) => (
+              <tr key={index}> */}
+                {/* <th>{index + 1}</th>
+                <td>{datum}</td>
+                <td>{datum}</td>
+                <td>{datum}</td>
+                <td>{datum}</td>
+                <td>{datum}</td>
+                <td>{datum}</td>
+                <td><button className="btn">See Details</button></td> */}
+                {/* {console.log(registeredUsers)} */}
+              {/* </tr>
+            ))} */}
           </tbody>
         </table>
       </div>

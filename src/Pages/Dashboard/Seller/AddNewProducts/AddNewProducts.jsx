@@ -1,76 +1,110 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../../Context/AuthProvider";
+import Loading from "../../../../Components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 
 const AddNewProducts = () => {
   const { user } = useContext(AuthContext);
-  const [quantity, setQuantity] = useState()
+  const navigate = useNavigate();
 
   const date = new Date();
 
   const months = [
-    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
-
+  
   const day = date.getDate();
   const month = months[date.getMonth()];
   const year = date.getFullYear();
 
   const formattedDate = `${day}-${month}-${year}`;
-
+  
   const [productData, setProductData] = useState({
     quantity: "",
+    wholesalePrice: "",
     sellPrice: "",
     name: "",
-    originalPrice: "",
-    expireDate: "",
-    pricePerUnit: "",
-    profitAmount: "",
     company: "",
     distributorName: "",
+    expireDate: "",
     distributorPhoneNumber: "",
     location: "",
     preciseLocation: "",
-    shopUID: user.uid,
+    shopUID: user?.uid,
     buyingDate: formattedDate,
-    remaining: quantity,
   });
-  console.log(quantity)
-  const [isLoading, setIsLoading] = useState(false);
 
+  console.log(productData);
+
+  useEffect(() => {
+    // Parse necessary values as numbers
+    const quantity = parseInt(productData.quantity, 10);
+    const sellPrice = parseFloat(productData.sellPrice);
+    const wholesalePrice = parseFloat(productData.wholesalePrice);
+
+    // Perform calculations
+    const profit = sellPrice - wholesalePrice;
+    const profitPerUnit = profit / quantity;
+    const wholesalePricePerUnit = wholesalePrice / quantity;
+    const sellPricePerUnit = sellPrice / quantity;
+
+    // Update productData with the calculated values
+    setProductData((prevProductData) => ({
+      ...prevProductData,
+      profitPerUnit,
+      profit,
+      wholesalePricePerUnit,
+      sellPricePerUnit,
+    }));
+  }, [productData.quantity, productData.wholesalePrice, productData.sellPrice]);
+  
+  const [isLoading, setIsLoading] = useState(false);
+  
   const handleInputChange = (e) => {
     setProductData({
       ...productData,
       [e.target.name]: e.target.value,
     });
   };
-
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+    
+    console.log(productData);
     try {
       // Send a POST request to the /products API
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/products",
         productData
       );
 
-      setQuantity(productData.quantity)
+      // Optional: Handle the response as needed
       
-
-      console.log(response.data); // Optional: Handle the response as needed
+      // Optional: Handle the response as needed
 
       // Clear the input fields
       setProductData({
         quantity: "",
         sellPrice: "",
         name: "",
-        originalPrice: "",
+        wholesalePrice: "",
         expireDate: "",
-        pricePerUnit: "",
-        profitAmount: "",
+        wholesalePricePerUnit: "",
+        profitPerUnit: "",
         company: "",
         distributorName: "",
         distributorPhoneNumber: "",
@@ -81,14 +115,23 @@ const AddNewProducts = () => {
       console.error("Failed to send data:", error);
     } finally {
       setIsLoading(false);
+      toast.success('Successfully toasted!');
+      alert("success")
+      console.log("success")
     }
+
+    navigate("/available-products");
   };
 
   return (
     <div className="min-h-screen flex justify-center w-full">
       <div className="my-20">
-        <p className="text-center text-3xl font-semibold mb-5">Add a new product</p>
-        <form className="grid grid-cols-6 gap-4 shadow-lg p-10 rounded-lg" onSubmit={handleFormSubmit}>
+        <p className="text-center text-3xl font-semibold mb-5">
+          Add a new product
+        </p>
+        <form
+          className="grid grid-cols-6 gap-4 shadow-lg p-10 rounded-lg"
+          onSubmit={handleFormSubmit}>
           <div className="col-span-6">
             <label className="block mb-2">Product Name:</label>
             <input
@@ -103,19 +146,25 @@ const AddNewProducts = () => {
           </div>
 
           <div className="col-span-2">
-            <label className="block mb-2">Original Price:</label>
+            <label className="block mb-2">
+              <span className="text-red-500">*</span>Wholesale Price{" "}
+              <small>(all products)</small>:
+            </label>
             <input
               type="number"
               className="input border-gray-300 w-full"
               placeholder="Tk."
               required
-              name="originalPrice"
-              value={productData.originalPrice}
+              name="wholesalePrice"
+              value={productData.wholesalePrice}
               onChange={handleInputChange}
             />
           </div>
           <div className="col-span-2">
-            <label className="block mb-2">Selling Price:</label>
+            <label className="block mb-2">
+              <span className="text-red-500">*</span>Selling Price{" "}
+              <small>(all products)</small>:
+            </label>
             <input
               type="number"
               className="input border-gray-300 w-full"
@@ -127,7 +176,9 @@ const AddNewProducts = () => {
             />
           </div>
           <div className="col-span-2">
-            <label className="block mb-2">Quantity:</label>
+            <label className="block mb-2">
+              <span className="text-red-500">*</span>Quantity:
+            </label>
             <input
               type="number"
               className="input border-gray-300 w-full"
@@ -207,8 +258,9 @@ const AddNewProducts = () => {
             className="btn btn-primary mt-3 col-span-6"
           />
         </form>
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <Loading />}
       </div>
+        <Toaster></Toaster>
     </div>
   );
 };
@@ -248,12 +300,12 @@ export default AddNewProducts;
 //     />
 //   </div>
 //   <div>
-//     <label htmlFor="originalPrice">Original Price:</label>
+//     <label htmlFor="wholesalePrice">Original Price:</label>
 //     <input
 //       type="text"
-//       name="originalPrice"
-//       id="originalPrice"
-//       value={productData.originalPrice}
+//       name="wholesalePrice"
+//       id="wholesalePrice"
+//       value={productData.wholesalePrice}
 //       onChange={handleInputChange}
 //     />
 //   </div>
@@ -268,22 +320,22 @@ export default AddNewProducts;
 //     />
 //   </div>
 //   <div>
-//     <label htmlFor="pricePerUnit">Price Per Unit:</label>
+//     <label htmlFor="wholesalePricePerUnit">Price Per Unit:</label>
 //     <input
 //       type="text"
-//       name="pricePerUnit"
-//       id="pricePerUnit"
-//       value={productData.pricePerUnit}
+//       name="wholesalePricePerUnit"
+//       id="wholesalePricePerUnit"
+//       value={productData.wholesalePricePerUnit}
 //       onChange={handleInputChange}
 //     />
 //   </div>
 //   <div>
-//     <label htmlFor="profitAmount">Profit Amount:</label>
+//     <label htmlFor="profitPerUnit">Profit Amount:</label>
 //     <input
 //       type="text"
-//       name="profitAmount"
-//       id="profitAmount"
-//       value={productData.profitAmount}
+//       name="profitPerUnit"
+//       id="profitPerUnit"
+//       value={productData.profitPerUnit}
 //       onChange={handleInputChange}
 //     />
 //   </div>

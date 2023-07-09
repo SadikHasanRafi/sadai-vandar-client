@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import emailjs from '@emailjs/browser';
+import { AuthContext } from "../../Context/AuthProvider";
 
 
 
 const ContactUs = () => {
 
     // const [contactUs, setContactUs] = useState()
+    const { user } = useContext(AuthContext)
 
     const [message,setMessage] = useState("")
     const handleMessageChange = (e) =>{
@@ -24,8 +26,7 @@ const ContactUs = () => {
             emailSenderName:"user.displayName",
             emailSenderEmail:"user.email"
         };
-        console.log(templateParams)
-         
+        
         await emailjs.send('service_trinu0e', 'template_7usye2t', templateParams,"5BO_HLz973nk7zuz6")
             .then(function(response) {
                console.log('SUCCESS!', response.status, response.text);
@@ -53,7 +54,7 @@ const ContactUs = () => {
             <span className="label-text">Your email</span>
           </label>
           <input type="text"
-            value="{user.email}"
+            value={user?.email || "Email"}
             disabled
           placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
@@ -62,7 +63,7 @@ const ContactUs = () => {
           <label className="label">
             <span className="label-text">Your name</span>
           </label>
-          <input type="text" value="user.displayName" disabled placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
+          <input type="text" value={user?.displayName || "Anonymous"} disabled placeholder="Type here" className="input input-bordered input-primary w-full max-w-xl" />        
           </div>
 
         <div className="form-control">
