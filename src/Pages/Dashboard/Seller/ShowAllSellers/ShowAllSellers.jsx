@@ -11,7 +11,7 @@ const ShowAllSellers = () => {
     <div className="flex justify-center w-full">
       <div className="my-20">
         <p className="text-center text-3xl font-semibold">
-          All Sellers ({shopkeepers.length})
+          All Seller ({shopkeepers.length})
         </p>
         <div className="w-[80vw] mt-10">
           <div className="grid grid-cols-4 gap-5">

@@ -65,14 +65,14 @@ const AllAvailableProducts = () => {
                   <th></th>
                   <th>Product</th>
                   <th>Company</th>
-                  <th>Original Price</th>
+                  <th>Wholesale Price</th>
                   <th>Selling Price</th>
                   <th>Price Per Unit</th>
                   <th>Expire Date</th>
                   <th>Profit</th>
                   <th>Quantity</th>
                   <th>Distributor</th>
-                  <th>Distributor Phone Number</th>
+                  <th>Phone Number</th>
                 </tr>
               </thead>
               <tbody>

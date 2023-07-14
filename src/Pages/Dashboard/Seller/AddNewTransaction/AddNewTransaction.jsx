@@ -99,6 +99,7 @@ const AddNewTransaction = () => {
         let data = {
           buyerUID: buyerUID || "anonymous",
           price: transaction.wholesalePricePerUnit * parseInt(transaction.orderAmount),
+          TotalSellPrice: transaction.sellPricePerUnit * parseInt(transaction.orderAmount),
           shopUID: user?.uid,
           productID: transaction._id,
           quantity: transaction.orderAmount,

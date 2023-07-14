@@ -116,7 +116,6 @@ const AddNewProducts = () => {
     } finally {
       setIsLoading(false);
       toast.success('Successfully toasted!');
-      alert("success")
       console.log("success")
     }
 

@@ -68,6 +68,19 @@ const SelectRole = () => {
       >
         Buyer
       </button>
+
+
+
+      <button
+        className=" btn m-3 btn-outline btn-primary h-[5rem]"
+        onClick={() => handleButtonClick('dealer')}
+        disabled={loading}
+      >
+        Dealer
+      </button>
+
+
+
 </div>
     </div>
     }

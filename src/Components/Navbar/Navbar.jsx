@@ -1,12 +1,42 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import profile from "../../assets/profile.svg"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Loading from "../Loading/Loading";
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isBuyer, setIsBuyer] = useState(true)
+
+    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/user-type/${user?.uid}`
+        );
+        if (response.data.role === "buyer") {
+          setIsBuyer(true)
+        }else{
+          setIsBuyer(false)
+        }
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch user role:", error);
+        setIsLoading(false);
+      } 
+    };
+
+    fetchData();
+
+    return () => {
+      // Clean up any necessary resources
+    };
+  }, [user?.uid]);
 
   const handleLogOut = () => {
     logOut();
@@ -46,7 +76,8 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100 border-b">
+            {isLoading ? <Loading></Loading>:
+                  <div className="navbar bg-base-100 border-b">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -80,7 +111,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink className={activeLinkStyle} to="show-all-products">All Products</NavLink>
+           <NavLink className={activeLinkStyle} to="show-all-products">All Products</NavLink>
+
           {user && (
             <>
               <div className="dropdown dropdown-end">
@@ -105,7 +137,9 @@ const Navbar = () => {
             </>
           )}
         </div>
-      </div>
+      </div>}
+
+
     </div>
   );
 };

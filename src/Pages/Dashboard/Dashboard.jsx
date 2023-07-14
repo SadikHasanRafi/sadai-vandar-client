@@ -100,20 +100,20 @@ const Dashboard = () => {
                         Add New Product
                       </NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                       <NavLink
                         to="update-personal-info"
                         className={activeLinkStyle}>
                         Update Personal Info
                       </NavLink>
-                    </li>
-                    <li>
+                    </li> */}
+                    {/* <li>
                       <NavLink
                         to="show-all-sellers"
                         className={activeLinkStyle}>
                         Show All Buyers
                       </NavLink>
-                    </li>
+                    </li> */}
                   </>
                 )}
 
@@ -123,28 +123,28 @@ const Dashboard = () => {
                       <NavLink
                         to="buyer-my-buyings"
                         className={activeLinkStyle}>
-                        buyer-my-buyings
+                        My Buying
                       </NavLink>
                     </li>
-                    <li>
+                    {/* <li>
                       <NavLink
                         to="buyer-experimental-features"
                         className={activeLinkStyle}>
                         buyer-experimental-features
                       </NavLink>
-                    </li>
+                    </li> */}
                     <li>
                       <NavLink
                         to="buyer-update-profile"
                         className={activeLinkStyle}>
-                        buyer-update-profile
+                        Update Your Profile
                       </NavLink>
                     </li>
                     <li>
                       <NavLink
                         to="buyer-my-profile"
                         className={activeLinkStyle}>
-                        buyer-my-profile
+                        My Profile
                       </NavLink>
                     </li>
                   </>
