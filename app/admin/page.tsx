@@ -65,7 +65,7 @@ export default function AdminDashboard() {
       <ul className="menu w-full grow 
       
       bg-accent-light 
-      
+    
       border-2 border-red-200
       
       
