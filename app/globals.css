@@ -1,26 +1,40 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "daisyui" {
+  themes: sadaivandar ;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@plugin "daisyui/theme" {
+  name: "sadaivandar";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  default: true; /* set as default */
+
+  --color-primary: #006C49;
+  --color-primary-light: #D6F2E8; /* very soft bg */
+
+  --color-secondary: #4B7F74;
+  --color-secondary-light: #E2F0ED;
+
+  --color-accent: #10B981;
+  --color-accent-light: #D1FAE5;
+
+  --color-neutral: #191C1D;
+  --color-neutral-light: #E5E7EB;
+
+  --color-base-100: #FFFFFF;
+  --color-base-200: #F3F4F5;
+  --color-base-300: #E6E8EA;
+  --color-base-content: #191C1D;
+
+  --color-info: #0EA5E9;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #DC2626;
+
+  --rounded-box: 1rem;
+  --rounded-btn: 0.5rem;
+  --rounded-badge: 9999px;
+
+  --animation-btn: 0.25s;
+  --btn-text-case: none;
 }
