@@ -3,6 +3,22 @@
   themes: sadaivandar ;
 }
 
+@theme {
+  /* 1. Standard Colors */
+  --color-primary: #006C49;
+  --color-secondary: #4B7F74;
+  --color-accent: #10B981;
+  --color-neutral: #191C1D;
+
+  /* 2. Custom "Light" Variants */
+  /* This creates the 'bg-accent-light' and 'text-accent-light' classes */
+  --color-primary-light: #D6F2E8;
+  --color-secondary-light: #E2F0ED;
+  --color-accent-light: #f1fef7;
+  --color-neutral-light: #FFFFFF;
+}
+
+
 @plugin "daisyui/theme" {
   name: "sadaivandar";
 
@@ -10,16 +26,12 @@
   default: true; /* set as default */
 
   --color-primary: #006C49;
-  --color-primary-light: #D6F2E8; /* very soft bg */
 
   --color-secondary: #4B7F74;
-  --color-secondary-light: #E2F0ED;
 
   --color-accent: #10B981;
-  --color-accent-light: #D1FAE5;
 
   --color-neutral: #191C1D;
-  --color-neutral-light: #E5E7EB;
 
   --color-base-100: #FFFFFF;
   --color-base-200: #F3F4F5;

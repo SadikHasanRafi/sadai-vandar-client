@@ -1,7 +1,41 @@
-import Image from 'next/image'
-import React from 'react'
+"use client";
+import {
+  BarChart3,
+  CreditCard,
+  Grid,
+  LayoutDashboard,
+  Package,
+  Settings,
+  ShoppingCart,
+  Store,
+  Users,
+} from "lucide-react";
+import Image from 'next/image';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import AdminSidebarHeaders from "./(components)/AdminSidebarHeaders";
+import React from "react";
 
-export default function AdminDashboard() {
+export default function AdminDashboard({ children }: { children: React.ReactNode }) {
+
+
+  const pathname = usePathname();
+
+const menuItems = [
+  { name: "Dashboard", path: "/admin", icon: LayoutDashboard },
+  { name: "Vendor", path: "/admin/admin-vendor", icon: Store },
+  { name: "Customers", path: "/admin/admin-customers", icon: Users },
+  { name: "Products", path: "/admin/admin-products", icon: Package },
+  { name: "Orders", path: "/admin/admin-orders", icon: ShoppingCart },
+  { name: "Categories", path: "/admin/admin-categories", icon: Grid },
+  { name: "Analytics", path: "/admin/admin-analytics", icon: BarChart3 },
+  { name: "Payment", path: "/admin/admin-payment", icon: CreditCard },
+  { name: "Settings", path: "/admin/admin-settings", icon: Settings },
+];
+
+
+
+
   return (
     
 <div className="drawer drawer-open">
@@ -55,41 +89,86 @@ export default function AdminDashboard() {
 
 
     {/* Page content here */}
-    <div className="p-4">Page Content</div>
+    <div className="p-4">{children}</div>
     </div>
 
   <div className="drawer-side drawer-open">
     <label htmlFor="my-drawer-4" aria-label="open sidebar" className="drawer-overlay"></label>
     <div className="flex min-h-full flex-col items-start bg-base-200  w-64">
-      {/* Sidebar content here */}
-      <ul className="menu w-full grow 
-      
-      bg-accent-light 
-    
-      border-2 border-red-200
       
       
-      
-      ">
-        {/* List item */}
-        <li>
-          <button className=" " data-tip="Homepage">
-            {/* Home icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-            <span className="">Dashboard</span>
-          </button>
-        </li>
 
-        {/* List item */}
-        <li>
-          <button className="" data-tip="Settings">
-            {/* Settings icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M20 7h-9"></path><path d="M14 17H5"></path><circle cx="17" cy="17" r="3"></circle><circle cx="7" cy="7" r="3"></circle></svg>
-            <span className="">Settings</span>
-          </button>
-        </li>
-      </ul>
+
+<AdminSidebarHeaders></AdminSidebarHeaders>
+
+
+
+      {/* Sidebar content here */}
+<ul className="menu w-full grow bg-accent-light px-2">
+  {menuItems.map((item) => {
+    const isActive = pathname.startsWith(item.path);
+    const Icon = item.icon;
+
+    return (
+      <li key={item.name} className="mb-1">
+        <Link
+          href={item.path}
+          className={`
+            group flex items-center gap-3 w-full
+            px-4 py-2.5
+            rounded-box
+            transition-all duration-50
+            font-semibold text-[15px]
+
+            hover:pl-5
+            hover:bg-neutral-light
+            hover:border-r-4 hover:border-primary
+            hover:rounded-r-md
+
+            ${
+              isActive
+                ? "bg-neutral-light border-r-4 border-primary rounded-r-md"
+                : ""
+            }
+          `}
+        >
+          {/* Icon */}
+          <Icon
+            className={`
+              size-[18px]
+              transition-all duration-200
+
+              ${isActive ? "text-primary scale-105" : "text-neutral"}
+              group-hover:text-primary group-hover:scale-105
+            `}
+          />
+
+          {/* Text */}
+          <span
+            className={`
+              transition-all duration-200
+
+              ${isActive ? "text-primary" : "text-neutral"}
+              group-hover:text-primary
+            `}
+          >
+            {item.name}
+          </span>
+        </Link>
+      </li>
+    );
+  })}
+</ul>
+
+
+
+
+
+
     </div>
   </div>
+
+
+
 </div>  )
 }
